@@ -12,3 +12,34 @@ def calc_resistance(voltage, current) :
         The function raises a zero division error if current is 0.
     """
     return voltage / current
+
+
+def calc_current(voltage, resistance):
+    """
+    Calculate current using I = V / R
+    
+    Parameters:
+            voltage (float): Voltage across the resistor in volts
+            resistance (float): Resistance in ohms
+        
+        Returns:
+            float : current in amperes
+    """
+    current = voltage / resistance
+    return current
+
+
+def calc_power(voltage, resistance):
+    """
+    Calculate power dissipated in the resistor using P = V * I
+    
+    Parameters:
+            voltage (float): Voltage across the resistor in volts
+            resistance (float): Resistance of the resistor in ohms
+        
+        Returns:
+            float : Power in watts
+    """
+    current = calc_current(voltage, resistance)
+    power = voltage * current
+    return power
