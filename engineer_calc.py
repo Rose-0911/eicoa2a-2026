@@ -1,0 +1,96 @@
+from secrets import choice
+
+from ohms_law import calc_resistance
+from unit_converter import cm_to_inches, inches_to_cm, mm_to_inches, inches_to_mm
+
+DEFAULT_CURRENT = 0.5
+print("Global value:", DEFAULT_CURRENT)
+
+def show_default():
+    DEFAULT_CURRENT = 1.0
+    print("Inside function:", DEFAULT_CURRENT)
+
+show_default()
+print("Outside function:", DEFAULT_CURRENT)
+
+def build_menu():
+    """
+    Returns all engineering  menu options
+    """
+    return [
+        "Calculate Resistance",
+        "Convert mm to Inches",
+        "Convert Inches to mm",
+        "Convert cm to Inches",
+        "Convert Inches to cm",
+        "Exit"
+    ]
+
+def display_menu():
+    """Print a numbered menu of engineering calculations. 
+ 
+    The menu includes:
+    1. Calculate resistance (Ohm's Law)
+    2. Convert length (mm ↔ inches)
+    3. Exit 
+    """
+    options = build_menu()
+    for index, option in enumerate(options, start=1):
+        print(f"{index}. {option}")
+        
+    print("\n--- Engineering Calculator Menu ---") 
+    print("1. Calculate resistance")
+    print("2. Convert length")
+    print("3. Exit")
+
+def main():
+    running = True 
+ 
+    while running: 
+        display_menu() 
+ 
+        choice = input("Select an option: ") 
+ 
+        if choice == "1": 
+            voltage = float(input("Enter voltage (V): "))
+            current_input =input("Enter current (A) or press Enter for default: ")
+
+            if current_input == "":
+                current = DEFAULT_CURRENT
+            else:
+                current = float(current_input)
+            
+            try:
+                resistance = calc_resistance(voltage, current)
+                print("Resistance =", resistance, "ohms")
+
+            except ZeroDivisionError:
+                print("Error: Current cannot be zero.")
+            
+        elif choice == "2": 
+            direction = input("Enter conversion (mm_to_in or in_to_mm): ") 
+ 
+            value = float(input("Enter the measurement: "))
+ 
+            if direction == "mm_to_in":
+                print("Converted value:", mm_to_inches(value), "inches") 
+ 
+            elif direction == "in_to_mm":
+                print("Converted value:", inches_to_mm(value), "mm")
+ 
+            else:
+                print("Invalid conversion option.")
+ 
+        elif choice == "3":
+            running = False
+            print("Program closed.")
+ 
+        else:
+            print("Invalid menu option.")
+
+if __name__ == "__main__":
+    main()
+    print(calc_resistance.__doc__) 
+    print(mm_to_inches.__doc__)
+    print(cm_to_inches.__doc__)
+    print(inches_to_cm.__doc__)
