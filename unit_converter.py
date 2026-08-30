@@ -20,3 +20,30 @@ def inches_to_mm(inches):
         float: Length in millimetres ( inches * 25.4)
     """
     return inches * 25.4
+
+def cm_to_inches(cm):
+    """ Convert centimetres to inches.
+ 
+    Args:
+        cm (float): Length in centimetres.
+ 
+    Returns:
+        float: Length in inches (1 inch = 2.54 cm).
+    """
+    return cm / 2.54
+
+def inches_to_cm(inches):
+    """ Convert inches to centimetres.
+ 
+    Args:
+        inches (float): Length in inches.
+ 
+    Returns:
+        float: Length in centimetres (inches * 2.54).
+    """
+    return inches * 2.54
+
+print(cm_to_inches.__doc__) 
+print(inches_to_cm.__doc__)
+print(mm_to_inches.__doc__)
+print(inches_to_mm.__doc__)

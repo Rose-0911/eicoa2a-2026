@@ -1,7 +1,7 @@
 from secrets import choice
 
 from ohms_law import calc_resistance
-from unit_converter import mm_to_inches, inches_to_mm
+from unit_converter import cm_to_inches, inches_to_cm, mm_to_inches, inches_to_mm
 
 DEFAULT_CURRENT = 0.5
 print("Global value:", DEFAULT_CURRENT)
@@ -75,3 +75,5 @@ if __name__ == "__main__":
     main()
     print(calc_resistance.__doc__) 
     print(mm_to_inches.__doc__)
+    print(cm_to_inches.__doc__)
+    print(inches_to_cm.__doc__)
