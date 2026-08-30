@@ -13,7 +13,20 @@ def show_default():
 show_default()
 print("Outside function:", DEFAULT_CURRENT)
 
-def display_menu(): 
+def build_menu():
+    """
+    Returns all engineering  menu options
+    """
+    return [
+        "Calculate Resistance",
+        "Convert mm to Inches",
+        "Convert Inches to mm",
+        "Convert cm to Inches",
+        "Convert Inches to cm",
+        "Exit"
+    ]
+
+def display_menu():
     """Print a numbered menu of engineering calculations. 
  
     The menu includes:
@@ -21,6 +34,10 @@ def display_menu():
     2. Convert length (mm ↔ inches)
     3. Exit 
     """
+    options = build_menu()
+    for index, option in enumerate(options, start=1):
+        print(f"{index}. {option}")
+        
     print("\n--- Engineering Calculator Menu ---") 
     print("1. Calculate resistance")
     print("2. Convert length")
